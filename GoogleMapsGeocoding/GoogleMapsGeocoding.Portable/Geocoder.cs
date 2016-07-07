@@ -135,7 +135,7 @@ namespace GoogleMapsGeocoding
         /// <returns>GeocodeResponnse as a sting according to specified format(JSON, XML)</returns>
         public async Task<string> ReverseGeocodeJsonAsync(double latitude, double longitude, CancellationToken cancellationToken = default(CancellationToken))
         {
-            string latLngString = String.Format("{0},{1}", latitude.ToString(), longitude.ToString());
+            string latLngString = String.Format("{0},{1}", latitude.ToString(System.Globalization.CultureInfo.InvariantCulture), longitude.ToString(System.Globalization.CultureInfo.InvariantCulture));
             Dictionary<string, string> values = new Dictionary<string, string>();
             values.Add(GlobalConstants.LATLNG_REQUEST_PARAM.Replace("&", string.Empty).Replace("=", string.Empty).Replace("?", string.Empty), latLngString);
             var requestUriString = BuildGoogleRequest(values);
